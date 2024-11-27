@@ -12,11 +12,11 @@ def test_01():
 
     clean_data.main(
         "files/input/input.txt",
-        "files/output/output.txt",
+        "files/output.txt",
     )
 
-    if not os.path.exists("files/output/test.csv"):
-        raise FileNotFoundError("File 'files/output/test.csv' not found")
+    if not os.path.exists("files/test.csv"):
+        raise FileNotFoundError("File 'files/test.csv' not found")
 
     test = pd.read_csv("files/test.csv", index_col=None)
 
@@ -29,12 +29,12 @@ def test_01():
 
     #
     # Retorna error si la carpeta output/ no existe
-    if not os.path.exists("files/output/output.txt"):
-        raise FileNotFoundError("File 'files/output/output.txt' not found")
+    if not os.path.exists("files/output.txt"):
+        raise FileNotFoundError("File 'files/output.txt' not found")
 
     #
     # Lee el contenido del archivo output.txt
-    dataframe = pd.read_csv("files/output/output.txt")
+    dataframe = pd.read_csv("files/output.txt")
     count = dataframe.groupby("text").size()
 
     assert count.loc["AD-HOC QUERIES"] == 3
